@@ -18,17 +18,11 @@ You are tasked with making the commercial shipping process less painful. The fol
 <b> You are free to use any of the following: </b>
 
 https://catalog.data.gov/dataset/harmonized-tariff-schedule
-
 https://catalog.data.gov/dataset/noaas-ship-tracker
-
 https://catalog.data.gov/dataset/shipping-lanes-in-u-s-waters
-
 https://catalog.data.gov/dataset/national-commercial-shipping-vessel-density-2009-2010
-
 https://catalog.data.gov/dataset/international-price-program-import-export-price-indexes
-
 https://catalog.data.gov/dataset/the-north-american-transborder-freight-database
-
 https://catalog.data.gov/dataset/monthly-wholesale-trade
 
 Please let us know if you have any questions.
