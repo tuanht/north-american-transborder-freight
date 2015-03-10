@@ -6,7 +6,7 @@ We provide the following challenge to better assess your development skills and 
 <ul>
 <li>Fork this repo and complete your project in the fork</li>
 <li>Use git to track your progress</li>
-<li>Limit your time spent to a few hours</li>
+<li>This should take you no longer than 5 hours</li>
 <li>Upon completion, please submit a pull request</li>
 <li>Ensure that your application is easy to set up and run on Rails 4</li>
 </ul>
