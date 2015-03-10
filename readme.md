@@ -1,6 +1,6 @@
 # Shipstr Ruby Coding Challenge
 
-We provide the following challenge to better assess your development skills and gauge your interest in the shipping industry.
+We provide the following challenge to better assess your creatavity and development skills and gauge your interest in what we are trying to build.
 
 <b>Instructions</b>
 <ul>
