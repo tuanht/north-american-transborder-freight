@@ -8,6 +8,7 @@ We provide the following challenge to better assess your creatavity and developm
 <li>Use git to track your progress</li>
 <li>This should take you no longer than 5 hours</li>
 <li>Upon completion, please submit a pull request</li>
+<li>Please submit your solution within 48 hours, after getting developer test email</li>
 <li>Ensure that your application is easy to set up and run on Rails 4</li>
 </ul>
 
