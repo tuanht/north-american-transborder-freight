@@ -46,7 +46,7 @@ You can import all sample data with one command
 rake codes:import
 rake data:import
 ```
-**! For more informations, please see [Project Wiki](https://github.com/tuanht/north-american-transborder-freight/wiki)**
+**! For more informations about data model and design structures, please see [Project Wiki](https://github.com/tuanht/north-american-transborder-freight/wiki)**
 ## You've done and now you can browse [http://localhost:3000](http://localhost:3000).
 ![Dashboard](https://raw.githubusercontent.com/tuanht/north-american-transborder-freight/master/screenshot/dashboard.png)
 ![Excel report](https://raw.githubusercontent.com/tuanht/north-american-transborder-freight/master/screenshot/report.png)
