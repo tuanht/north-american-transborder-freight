@@ -1,0 +1,41 @@
+!!!
+%html
+  %head
+    %title Transborder Freight
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body.skin-purple.sidebar-collapse
+    .wrapper
+      / Main Header
+      %header.main-header
+        / Logo
+        %a.logo{:href => "/"}
+          %b> Transborder Freight
+        %nav.navbar.navbar-static-top{:role => "navigation"}
+          %a.sidebar-toggle{"data-toggle" => "offcanvas", :href => "#", :role => "button"}
+            %span.sr-only Toggle navigation
+      %aside.main-sidebar
+        %section.sidebar
+          = render_navigation :expand_all => true
+      .content-wrapper
+        -#%section.content-header
+        -#  %h1
+        -#    Page Header
+        -#    %small Optional description
+        -#  %ol.breadcrumb
+        -#    %li
+        -#      %a{:href => "#"}
+        -#        %i.fa.fa-dashboard
+        -#        Level
+        -#    %li.active Here
+        %section.content
+          = yield
+      %footer.main-footer
+        .pull-right.hidden-xs
+          Thanks!
+        %strong
+          Copyright © 2015
+          = succeed "." do
+            %a{:href => "#"} IndexMedia
+        All rights reserved.

@@ -1,0 +1,78 @@
+wb = xlsx_package.workbook
+
+# define style
+styles = wb.styles
+
+format_number = '#,##0'
+format_money_usd = '[$$-409]#,##0.00;[RED]-[$$-409]#,##0.00'
+format_percent = '0.00%'
+
+@title = styles.add_style b: true, bg_color: 'FF0000', fg_color: 'FF', :alignment => { :horizontal => :center }
+@blank = styles.add_style fg_color: 'FF'
+@title_with_border = styles.add_style b: true, bg_color: 'FF0000', fg_color: 'FF', :alignment => { :horizontal => :center }, :border => Axlsx::STYLE_THIN_BORDER
+@center = styles.add_style :alignment => { :horizontal => :center }
+
+@border = styles.add_style border: Axlsx::STYLE_THIN_BORDER, :alignment => { :horizontal => :center }
+@border_money = styles.add_style border: Axlsx::STYLE_THIN_BORDER, format_code: format_money_usd, :alignment => { :horizontal => :center }
+
+@number = styles.add_style format_code: format_number
+@money = styles.add_style format_code: format_money_usd
+@percent = styles.add_style format_code: format_percent
+
+@head = styles.add_style :b => true, :bg_color => "605CA8", :fg_color => "FF"
+@head_number = styles.add_style :b => true, :bg_color => "605CA8", :fg_color => "FF", :format_code => format_number
+@head_money = styles.add_style :b => true, :bg_color => "605CA8", :fg_color => "FF", :format_code => format_money_usd
+@head_percent = styles.add_style :b => true, :bg_color => "605CA8", :fg_color => "FF", :format_code => format_percent
+
+def get_row(o)
+  [o.date.strftime("%m/%Y"), o.sum_value, o.sum_shipwt, o.sum_freight_charges]
+end
+
+def get_style
+  [nil, @number, @number, @number]
+end
+
+if import_data.length > 0
+  wb.add_worksheet(name: 'Summary') do |sheet|
+    sheet.add_row ['Summary'], style: @center
+    sheet.merge_cells 'A1:I1'
+
+    sheet.add_row ['Import', '', '', '', '', 'Export', '', '', ''], style: @center
+    sheet.merge_cells 'A2:D2'
+    sheet.merge_cells 'F2:I2'
+
+    sheet.add_row ['Month', 'Value', 'Ship Weight', 'Freight Charges', '', 'Month', 'Value', 'Ship Weight', 'Freight Charges'],
+                  style: [@head, @head, @head, @head, nil, @head, @head, @head, @head]
+
+    length = import_data.length > export_data.length ? import_data.length : export_data.length
+
+    Rails.logger.info length
+
+    init_row = current_row = 4
+    for i in 0...length
+      row = (import_data[i].nil? ? ['', '', '', ''] : get_row(import_data[i])) + [''] + (export_data[i].nil? ? ['', '', '', ''] : get_row(export_data[i]))
+      sheet.add_row row, style: get_style + [nil] + get_style
+      current_row += 1
+    end
+
+    sheet.add_row ['', "=SUM(B#{init_row}:B#{current_row - 1})", "=SUM(C#{init_row}:C#{current_row - 1})", "=SUM(D#{init_row}:D#{current_row - 1})",
+                   '',
+                   '', "=SUM(G#{init_row}:G#{current_row - 1})", "=SUM(H#{init_row}:H#{current_row - 1})", "=SUM(I#{init_row}:I#{current_row - 1})"],
+                  style: [@head, @head_number, @head_number, @head_number, nil, @head, @head_number, @head_number, @head_number]
+
+    sheet.add_row ['', 'Import', 'Export'], style: @blank
+    sheet.add_row ['', "=SUM(B#{init_row}:B#{current_row - 1})", "=SUM(G#{init_row}:G#{current_row - 1})"], style: @blank
+    sheet.add_row ['', "=SUM(C#{init_row}:C#{current_row - 1})", "=SUM(H#{init_row}:H#{current_row - 1})"], style: @blank
+    sheet.add_row ['', "=SUM(D#{init_row}:D#{current_row - 1})", "=SUM(I#{init_row}:I#{current_row - 1})"], style: @blank
+
+    sheet.add_chart(Axlsx::Pie3DChart, :start_at => "A#{current_row + 1}", :end_at => "E#{current_row + 10}", :title => "Value") do |chart|
+      chart.add_series :data => sheet["B#{current_row + 2}:C#{current_row + 2}"], :labels => sheet["B#{current_row + 1}:C#{current_row + 1}"]
+    end
+    sheet.add_chart(Axlsx::Pie3DChart, :start_at => "A#{current_row + 11}", :end_at => "E#{current_row + 20}", :title => "Ship Weight") do |chart|
+      chart.add_series :data => sheet["B#{current_row + 3}:C#{current_row + 3}"], :labels => sheet["B#{current_row + 1}:C#{current_row + 1}"]
+    end
+    sheet.add_chart(Axlsx::Pie3DChart, :start_at => "A#{current_row + 21}", :end_at => "E#{current_row + 30}", :title => "Freight Charges") do |chart|
+      chart.add_series :data => sheet["B#{current_row + 4}:C#{current_row + 4}"], :labels => sheet["B#{current_row + 1}:C#{current_row + 1}"]
+    end
+  end
+end

@@ -1,0 +1,14 @@
+{
+  "name": "array",
+  "homepage": "https://github.com/MatthewMueller/array",
+  "version": "0.4.3",
+  "_release": "0.4.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.4.3",
+    "commit": "820cfcb7273f25a8454d295c1b657cfd74d64d3f"
+  },
+  "_source": "git://github.com/MatthewMueller/array.git",
+  "_target": "*",
+  "_originalSource": "array"
+}

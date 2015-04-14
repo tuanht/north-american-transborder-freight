@@ -1,0 +1,10 @@
+//= require jquery
+//= require jquery_ujs
+//= require js-routes
+//= require twitter/bootstrap
+//= require adminlte.min
+//= require angular/angular.min.js
+//= require angular-ui-grid/ui-grid.min.js
+//= require angular/app
+//= require angular/controllers/home.controller
+//= require_tree .

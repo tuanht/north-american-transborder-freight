@@ -1,0 +1,54 @@
+%h1 Dashboard
+%div{ng: {app: 'home.app'}}
+  %div{ng: {controller: 'HomeController as homeCtrl'}}
+    #action-buttons
+      %a.btn.btn-success{href: export_summary_path}
+        = fa_icon 'download'
+        Download Excel
+    .row
+      .col.col-md-6.col-sm-12
+        .box.box-danger.box-solid
+          .box-header.with-border
+            %h3.box-title
+              = fa_icon 'arrow-circle-down'
+              Sum of Import
+            .box-tools.pull-right
+              .btn.btn-box-tool{ data: {widget: 'collapse'}}
+                = fa_icon 'minus'
+          .box-body
+            #import_grid.grid{ 'ui-grid' => 'homeCtrl.importGridOptions', 'ui-grid-pagination' => ''}
+      .col.col-md-6.col-sm-12
+        .box.box-success.box-solid
+          .box-header.with-border
+            %h3.box-title
+              = fa_icon 'arrow-circle-o-up'
+              Sum of Export
+            .box-tools.pull-right
+              .btn.btn-box-tool{ data: {widget: 'collapse'}}
+                = fa_icon 'minus'
+          .box-body
+            #export_grid.grid{ 'ui-grid' => 'homeCtrl.exportGridOptions', 'ui-grid-pagination' => ''}
+
+    .row
+      .col.col-md-6.col-sm-12
+        .box.box-danger.box-solid
+          .box-header.with-border
+            %h3.box-title
+              = fa_icon 'arrow-circle-down'
+              Sum of Import by USA State
+            .box-tools.pull-right
+              .btn.btn-box-tool{ data: {widget: 'collapse'}}
+                = fa_icon 'minus'
+          .box-body
+            #import_grid.grid{ 'ui-grid' => 'homeCtrl.usaImportGridOptions', 'ui-grid-pagination' => ''}
+      .col.col-md-6.col-sm-12
+        .box.box-success.box-solid
+          .box-header.with-border
+            %h3.box-title
+              = fa_icon 'arrow-circle-o-up'
+              Sum of Export by USA State
+            .box-tools.pull-right
+              .btn.btn-box-tool{ data: {widget: 'collapse'}}
+                = fa_icon 'minus'
+          .box-body
+            #export_grid.grid{ 'ui-grid' => 'homeCtrl.usaExportGridOptions', 'ui-grid-pagination' => ''}
