@@ -47,4 +47,5 @@ rake codes:import
 rake data:import
 ```
 ## You've done and now you can browse [http://localhost:3000](http://localhost:3000).
-![Alt text](/path/to/img.jpg)
+![Dashboard](https://raw.githubusercontent.com/tuanht/north-american-transborder-freight/master/screenshot/dashboard.png)
+![Excel report](https://raw.githubusercontent.com/tuanht/north-american-transborder-freight/master/screenshot/report.png)
