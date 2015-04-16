@@ -39,7 +39,7 @@ class Trade < ActiveRecord::Base
 
   def self.get_sum_values(o)
     {
-        value: o.sum_value,
+        value: o.sum_value.to_i,
         shipwt: o.sum_shipwt,
         freight_charges: o.sum_freight_charges
     }
