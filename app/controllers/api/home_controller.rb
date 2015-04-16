@@ -14,20 +14,6 @@ class Api::HomeController < Api::ApplicationController
            }
   end
 
-  def by_usa_state
-    import = Trade.by_usa_state_import
-    export = Trade.by_usa_state_export
-
-    render :json => {
-               import: import.map do |i|
-                 map_usa_state i
-               end,
-               export: export.map do |e|
-                 map_usa_state e
-               end
-           }
-  end
-
   private
 
   def map_summary(o)
