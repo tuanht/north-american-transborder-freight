@@ -18,21 +18,15 @@ class Api::HomeController < Api::ApplicationController
 
   def map_summary(o)
     {
-        date: o.date.strftime("%B %Y"),
-    }.merge get_sum_values(o)
-  end
-
-  def map_usa_state(o)
-    {
-        usa_state: UsaState.find(o.usa_state_id).name
+        date: o.date,
     }.merge get_sum_values(o)
   end
 
   def get_sum_values(o)
     {
-        value: o.sum_value.to_money(:USD).format,
+        value: o.sum_value,
         shipwt: "#{number_to_human o.sum_shipwt} Kilograms",
-        freight_charges: o.sum_freight_charges.to_money(:USD).format
+        freight_charges: o.sum_freight_charges
     }
   end
 end

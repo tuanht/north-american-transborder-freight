@@ -9,10 +9,10 @@ class HomeController
       paginationPageSizes: [25, 50, 75],
       paginationPageSize: 25,
       columnDefs: [
-        { name: 'date', displayName: 'Month' },
-        { name: 'value', displayName: 'Value' },
+        { name: 'date', displayName: 'Month', cellFilter: 'date:"MMMM, yyyy"' },
+        { name: 'value', displayName: 'Value', cellFilter: 'currency'},
         { name: 'shipwt', displayName: 'Ship Weight' },
-        { name: 'freight_charges', displayName: 'Freight Charges'}
+        { name: 'freight_charges', displayName: 'Freight Charges', cellFilter: 'currency'}
       ]
 
     @exportGridOptions =
@@ -21,10 +21,10 @@ class HomeController
       paginationPageSizes: [25, 50, 75],
       paginationPageSize: 25,
       columnDefs: [
-        { name: 'date', displayName: 'Month' },
-        { name: 'value', displayName: 'Value' },
+        { name: 'date', displayName: 'Month', cellFilter: 'date:"MMMM, yyyy"' },
+        { name: 'value', displayName: 'Value', cellFilter: 'currency'},
         { name: 'shipwt', displayName: 'Ship Weight' },
-        { name: 'freight_charges', displayName: 'Freight Charges'}
+        { name: 'freight_charges', displayName: 'Freight Charges', cellFilter: 'currency'}
       ]
 
     @http.get Routes.api_summary_path(format: 'json')
