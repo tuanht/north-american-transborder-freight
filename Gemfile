@@ -46,15 +46,6 @@ gem 'js-routes'
 # endregion
 
 # region Development + Test gems
-group :test do
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'cucumber-rails', :require => false
-  gem 'database_cleaner'
-  gem 'factory_girl_rails'
-  gem 'selenium-webdriver'
-  gem 'faker'
-end
 group :development do
   gem 'byebug'
   gem 'spring'
