@@ -29,7 +29,7 @@ class HomeController
       columnDefs: [
         { name: 'date', displayName: 'Month', cellFilter: 'date:"MMMM, yyyy"' },
         { name: 'value', displayName: 'Value', cellFilter: 'currency'},
-        { name: 'shipwt', displayName: 'Ship Weight' },
+        { name: 'shipwt', displayName: 'Ship Weight', cellFilter: 'number' },
         { name: 'freight_charges', displayName: 'Freight Charges', cellFilter: 'currency'}
       ]
 
@@ -41,7 +41,7 @@ class HomeController
       columnDefs: [
         { name: 'date', displayName: 'Month', cellFilter: 'date:"MMMM, yyyy"' },
         { name: 'value', displayName: 'Value', cellFilter: 'currency'},
-        { name: 'shipwt', displayName: 'Ship Weight' },
+        { name: 'shipwt', displayName: 'Ship Weight', cellFilter: 'number' },
         { name: 'freight_charges', displayName: 'Freight Charges', cellFilter: 'currency'}
       ]
 
