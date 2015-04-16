@@ -39,5 +39,6 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
     primary.dom_class = 'sidebar-menu'
     primary.item :dashboard, 'Dashboard', root_path
+    primary.item :search, 'Search', search_path
   end
 end

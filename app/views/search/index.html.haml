@@ -1,0 +1,41 @@
+%h1 Search
+%div{ng: {app: 'search.app'}}
+  %div{ng: {controller: 'SearchController as searchCtrl'}}
+    .row
+      .col-md-3
+        %ui-select{ng: {model: 'searchCtrl.country'}, on: {select: 'searchCtrl.loadTrades()'}, theme: 'bootstrap'}
+          %ui-select-match{placeholder: 'Choose country in the list...', allow: {clear: '{{true}}'}}
+            {{$select.selected.country}}
+          %ui-select-choices{repeat: 'country in searchCtrl.countries | filter: $select.search'}
+            %span{ng: {bind: {html: 'country.country | highlight: $select.search'}}}
+      .col-md-3
+        %ui-select{ng: {model: 'searchCtrl.port'}, on: {select: 'searchCtrl.loadTrades()'}, theme: 'bootstrap'}
+          %ui-select-match{placeholder: 'Choose port in the list...', allow: {clear: '{{true}}'}}
+            {{$select.selected.name}}
+          %ui-select-choices{repeat: 'port in searchCtrl.ports | filter: $select.search'}
+            %span{ng: {bind: {html: 'port.name | highlight: $select.search'}}}
+      .col-md-3
+        %ui-select{ng: {model: 'searchCtrl.state'}, on: {select: 'searchCtrl.loadTrades()'}, theme: 'bootstrap'}
+          %ui-select-match{placeholder: 'Choose state in the list...', allow: {clear: '{{true}}'}}
+            {{$select.selected.name}}
+          %ui-select-choices{repeat: 'state in searchCtrl.states | filter: $select.search'}
+            %span{ng: {bind: {html: 'state.name | highlight: $select.search'}}}
+      .col-md-3
+        %ui-select{ng: {model: 'searchCtrl.commodity'}, on: {select: 'searchCtrl.loadTrades()'}, theme: 'bootstrap'}
+          %ui-select-match{placeholder: 'Choose commodity in the list...', allow: {clear: '{{true}}'}}
+            {{$select.selected.description}}
+          %ui-select-choices{repeat: 'commodity in searchCtrl.commodities | filter: $select.search'}
+            %span{ng: {bind: {html: 'commodity.description | highlight: $select.search'}}}
+    %hr
+    .row
+      .col.col-xs-12
+        .box.box-danger.box-solid
+          .box-header.with-border
+            %h3.box-title
+              = fa_icon 'arrow-circle-down'
+              Grid
+            .box-tools.pull-right
+              .btn.btn-box-tool{ data: {widget: 'collapse'}}
+                = fa_icon 'minus'
+          .box-body.no-padding
+            .grid{ 'ui-grid' => 'searchCtrl.gridOptions', 'ui-grid-pagination' => true, 'ui-grid-auto-resize' => true}

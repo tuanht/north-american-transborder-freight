@@ -3,8 +3,12 @@
 //= require js-routes
 //= require twitter/bootstrap
 //= require adminlte.min
+//= require highcharts/highcharts
 //= require angular/angular.min.js
 //= require angular-ui-grid/ui-grid.min.js
+//= require angular-sanitize/angular-sanitize.min.js
+//= require angular-ui-select/dist/select.min.js
 //= require angular/app
 //= require angular/controllers/home.controller
+//= require angular/controllers/search.controller
 //= require_tree .
