@@ -28,27 +28,3 @@
                 = fa_icon 'minus'
           .box-body
             #export_grid.grid{ 'ui-grid' => 'homeCtrl.exportGridOptions', 'ui-grid-pagination' => ''}
-
-    .row
-      .col.col-md-6.col-sm-12
-        .box.box-danger.box-solid
-          .box-header.with-border
-            %h3.box-title
-              = fa_icon 'arrow-circle-down'
-              Sum of Import by USA State
-            .box-tools.pull-right
-              .btn.btn-box-tool{ data: {widget: 'collapse'}}
-                = fa_icon 'minus'
-          .box-body
-            #import_grid.grid{ 'ui-grid' => 'homeCtrl.usaImportGridOptions', 'ui-grid-pagination' => ''}
-      .col.col-md-6.col-sm-12
-        .box.box-success.box-solid
-          .box-header.with-border
-            %h3.box-title
-              = fa_icon 'arrow-circle-o-up'
-              Sum of Export by USA State
-            .box-tools.pull-right
-              .btn.btn-box-tool{ data: {widget: 'collapse'}}
-                = fa_icon 'minus'
-          .box-body
-            #export_grid.grid{ 'ui-grid' => 'homeCtrl.usaExportGridOptions', 'ui-grid-pagination' => ''}
