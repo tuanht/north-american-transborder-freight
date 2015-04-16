@@ -2,6 +2,21 @@ class HomeController
   @$inject: ['$scope', '$http']
 
   constructor: (@scope, @http) ->
+    @chartOptions =
+      options:
+        chart:
+          type: 'line'
+        tooltip:
+          shared: true
+          crosshairs: true
+      title:
+        text: ''
+      size:
+        height: 300
+      xAxis:
+        type: 'datetime'
+      series: []
+
     @importGridOptions =
       enableAutoResizing: true
       minRowsToShow: 5
@@ -31,8 +46,19 @@ class HomeController
       .success (res) =>
         @importGridOptions.data = res.import
         @exportGridOptions.data = res.export
+        @chartOptions.series.push @toSeries('Import', res.import)
+        @chartOptions.series.push @toSeries('Export', res.export)
+
+  toSeries: (name, items) ->
+    data = []
+    for item in items
+      date = new Date(item.date)
+      data.push [Date.UTC(date.getFullYear(), date.getMonth(), date.getDay()), item.value]
+    series =
+      name: name
+      data: data
 
 angular
 .module 'home.app'
 .controller 'HomeController', HomeController
-.requires.push 'ui.grid'
+.requires.push 'ui.grid', 'highcharts-ng'

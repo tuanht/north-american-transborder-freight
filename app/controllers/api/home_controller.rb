@@ -24,7 +24,7 @@ class Api::HomeController < Api::ApplicationController
 
   def get_sum_values(o)
     {
-        value: o.sum_value,
+        value: o.sum_value.to_i,
         shipwt: "#{number_to_human o.sum_shipwt} Kilograms",
         freight_charges: o.sum_freight_charges
     }
