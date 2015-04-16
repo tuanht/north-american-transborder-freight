@@ -34,11 +34,6 @@ class Trade < ActiveRecord::Base
   def self.map_summary(o)
     {
         date: o.date,
-    }.merge get_sum_values(o)
-  end
-
-  def self.get_sum_values(o)
-    {
         value: o.sum_value.to_i,
         shipwt: o.sum_shipwt,
         freight_charges: o.sum_freight_charges

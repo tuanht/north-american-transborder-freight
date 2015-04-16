@@ -5,5 +5,6 @@ class CreatePorts < ActiveRecord::Migration
       t.string :name
       t.integer :port_type
     end
+    add_index :ports, :code, unique: true
   end
 end

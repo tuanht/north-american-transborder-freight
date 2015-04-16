@@ -4,5 +4,6 @@ class CreateUsaStates < ActiveRecord::Migration
       t.string :code, null: false, limit: 2
       t.string :name
     end
+    add_index :usa_states, :code, unique: true
   end
 end
