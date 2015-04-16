@@ -29,6 +29,8 @@ namespace :codes do
     # endregion
   end
 
+  private
+
   def import_country(path, sheet_name)
     header = ['Code', 'Country']
     importer = get_excel_importer path, sheet_name, header
@@ -81,7 +83,6 @@ namespace :codes do
     puts "Imported #{importer.count} ports"
   end
 
-  private
   def get_excel_importer(path, sheet_name, header)
     Importer.new Importer.get_excel_reader(path, sheet_name), header
   end

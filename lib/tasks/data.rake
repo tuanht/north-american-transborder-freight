@@ -16,6 +16,8 @@ namespace :data do
     end
   end
 
+  private
+
   def import_table_1(path, table_type=:with_state_and_port)
     import_table(path, table_type) do |t, country_id|
       {
@@ -45,7 +47,6 @@ namespace :data do
     end
   end
 
-  private
   def import_table(path, table_type)
     unless block_given?
       return
