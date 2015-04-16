@@ -1,10 +1,21 @@
 %h1 Dashboard
 %div{ng: {app: 'home.app'}}
   %div{ng: {controller: 'HomeController as homeCtrl'}}
-    #action-buttons
-      %a.btn.btn-success{href: export_summary_path}
-        = fa_icon 'download'
-        Download Excel
+    .row
+      .col-lg-3.col-md-6.col-sm-12
+        .info-box
+          %span.info-box-icon.bg-red
+            = fa_icon 'arrow-circle-down'
+          .info-box-content
+            %span.info-box-text Import
+            %span.info-box-number{ng: {bind: 'homeCtrl.sumImport|currency'}}
+      .col-lg-3.col-md-6.col-sm-12
+        .info-box
+          %span.info-box-icon.bg-green
+            = fa_icon 'arrow-circle-o-up'
+          .info-box-content
+            %span.info-box-text Export
+            %span.info-box-number{ng: {bind: 'homeCtrl.sumExport|currency'}}
     .row
       .col.col-xs-12
         %highchart{config: 'homeCtrl.chartOptions'}
@@ -32,3 +43,8 @@
                 = fa_icon 'minus'
           .box-body
             #export_grid.grid{ 'ui-grid' => 'homeCtrl.exportGridOptions', 'ui-grid-pagination' => ''}
+
+    #action-buttons
+      %a.btn.btn-success{href: export_summary_path}
+        = fa_icon 'download'
+        Download Excel

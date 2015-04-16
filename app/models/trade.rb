@@ -25,8 +25,8 @@ class Trade < ActiveRecord::Base
   def self.summary_sum_value
     sums = with_state_and_port.group(:trade_type).sum(:value)
     {
-        export: sums[trade_types[:export]],
-        import: sums[trade_types[:import]],
+        export: sums[trade_types[:export]].to_i,
+        import: sums[trade_types[:import]].to_i,
     }
   end
 

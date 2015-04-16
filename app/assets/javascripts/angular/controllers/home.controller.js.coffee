@@ -2,6 +2,9 @@ class HomeController
   @$inject: ['$scope', '$http']
 
   constructor: (@scope, @http) ->
+    @sumImport = 0
+    @sumExport = 0
+
     @chartOptions =
       options:
         chart:
@@ -48,6 +51,11 @@ class HomeController
         @exportGridOptions.data = res.export
         @chartOptions.series.push @toSeries('Import', res.import)
         @chartOptions.series.push @toSeries('Export', res.export)
+
+    @http.get Routes.api_summary_sum_value_path(format: 'json')
+      .success (res) =>
+        @sumImport = res.import
+        @sumExport = res.export
 
   toSeries: (name, items) ->
     data = []

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => {:format => :json} do
     get 'summary', to: 'home#summary'
-    get 'summary/usa_state', to: 'home#by_usa_state'
+    get 'summary_sum_value', to: 'home#summary_sum_value'
     get 'trades', to: 'search#trades'
     get 'countries', to: 'search#countries'
     get 'ports', to: 'search#ports'
