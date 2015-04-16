@@ -27,15 +27,4 @@
           %ui-select-choices{repeat: 'commodity in searchCtrl.commodities | filter: $select.search'}
             %span{ng: {bind: {html: 'commodity.description | highlight: $select.search'}}}
     %hr
-    .row
-      .col.col-xs-12
-        .box.box-danger.box-solid
-          .box-header.with-border
-            %h3.box-title
-              = fa_icon 'arrow-circle-down'
-              Grid
-            .box-tools.pull-right
-              .btn.btn-box-tool{ data: {widget: 'collapse'}}
-                = fa_icon 'minus'
-          .box-body.no-padding
-            .grid{ 'ui-grid' => 'searchCtrl.gridOptions', 'ui-grid-pagination' => true, 'ui-grid-auto-resize' => true}
+    .grid{ 'ui-grid' => 'searchCtrl.gridOptions', 'ui-grid-pagination' => true, 'ui-grid-auto-resize' => true}
